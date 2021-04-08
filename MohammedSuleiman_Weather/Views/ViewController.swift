@@ -3,14 +3,15 @@
 //  MohammedSuleiman_Weather
 //
 //  Created by Mohammed on 2021-03-31.
-//
+// NAME: MOHAMMED SULEIMAN MOHAMED AL-FALAHY ID: 121083174
 
 import UIKit
  
 class ViewController: UIViewController {
 
-    @IBOutlet var pickerView : UIPickerView?
-    let cities = ["Toronto", "London", "New York", "Moscow", "Beijing", "Mumbai", "Cairo", "Dhaka", "Mumbai", "Karachi"]
+    @IBOutlet var image : UIImageView!
+    @IBOutlet var pickerView : UIPickerView!
+    let cities = ["Toronto", "London", "Ottawa", "Moscow", "Beijing", "Mumbai", "Cairo", "Dhaka", "Mumbai", "Karachi"]
     var cityPicked = ""
     
     override func viewDidLoad() {
@@ -20,6 +21,10 @@ class ViewController: UIViewController {
         cityPicked = cities[0] //initially
         self.pickerView?.delegate = self
         self.pickerView?.dataSource = self
+        
+        let bgUIImage : UIImage = UIImage(named: "cloud")!
+        self.image.image = bgUIImage
+        //setting background
     }
 
     @IBAction func getWeatherInfo(){

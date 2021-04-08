@@ -3,7 +3,7 @@
 //  MohammedSuleiman_Weather
 //
 //  Created by Mohammed on 2021-03-31.
-//
+// NAME: MOHAMMED SULEIMAN MOHAMED AL-FALAHY ID: 121083174
 
 import UIKit
 import Combine
@@ -22,7 +22,7 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.rowHeight = 500
+        self.tableView.rowHeight = 750
         self.url = "\(prt1)\(cityChosen)\(prt2)"
         
         print("URL: \(self.url)")

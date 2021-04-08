@@ -3,7 +3,7 @@
 //  MohammedSuleiman_Weather
 //
 //  Created by Mohammed on 2021-03-31.
-//
+// NAME: MOHAMMED SULEIMAN MOHAMED AL-FALAHY ID: 121083174
 
 import Foundation
 
@@ -13,6 +13,7 @@ class WeatherFetcher : ObservableObject{
     
     var API_KEY = "5bc90109297e4fdd95a171454213103"
     
+    //Observed property
     @Published var weather = Weather()
     
     static func getInstance() -> WeatherFetcher{

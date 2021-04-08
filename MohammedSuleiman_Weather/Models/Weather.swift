@@ -32,17 +32,16 @@ struct Weather: Codable{
         self.city = locationContainer?.name ?? "Not Available"
         self.tz_id = locationContainer?.tz_id  ?? "Not Available"
         
-        self.wind_kph = try response.decodeIfPresent(Double.self, forKey: .wind_kph) ?? 0.0
-        self.wind_mph = try response.decodeIfPresent(Double.self, forKey: .wind_mph) ?? 0.0
-        self.feelslike_c = try response.decodeIfPresent(Double.self, forKey: .feelslike_c) ?? 0.0
-        self.wind_dir = try response.decodeIfPresent(String.self, forKey: .wind_dir) ?? "Not Available"
-        self.uv = try response.decodeIfPresent(Double.self, forKey: .uv) ?? 0.0
         
         //from the Current object
         let currentContainer = try response.decodeIfPresent(Current.self, forKey: .current)
         self.temp_c = currentContainer?.temp_c ?? 0.0
         self.temp_f = currentContainer?.temp_f ?? 0.0
-        
+        self.feelslike_c = currentContainer?.feelslike_c  ?? 0.0
+        self.wind_dir = currentContainer?.wind_dir  ?? "Not Available"
+        self.uv = currentContainer?.uv ?? 0.0
+        self.wind_kph = currentContainer?.wind_kph ?? 0.0
+        self.wind_mph = currentContainer?.wind_mph ?? 0.0
     }
     
     //for the JSON from the API
@@ -77,10 +76,20 @@ struct Weather: Codable{
 struct Current: Codable{
     var temp_c: Double
     var temp_f : Double
+    var feelslike_c: Double
+    var wind_dir: String
+    var uv: Double
+    var wind_kph: Double
+    var wind_mph: Double
     
     enum CodingKeys : String, CodingKey{
         case temp_c = "temp_c"
         case temp_f = "temp_f"
+        case feelslike_c = "feelslike_c"
+        case wind_dir = "wind_dir"
+        case uv = "uv"
+        case wind_kph = "wind_kph"
+        case wind_mph = "wind_mph"
     }
     
     func encode(to encoder: Encoder) throws {
@@ -92,6 +101,11 @@ struct Current: Codable{
         
         self.temp_c = try response.decodeIfPresent(Double.self, forKey: .temp_c) ?? 0.0
         self.temp_f = try response.decodeIfPresent(Double.self, forKey: .temp_f) ?? 0.0
+        self.feelslike_c = try response.decodeIfPresent(Double.self, forKey: .feelslike_c) ?? 0.0
+        self.wind_dir = try response.decodeIfPresent(String.self, forKey: .wind_dir) ?? "Not Available"
+        self.uv = try response.decodeIfPresent(Double.self, forKey: .uv) ?? 0.0
+        self.wind_kph = try response.decodeIfPresent(Double.self, forKey: .wind_kph) ?? 0.0
+        self.wind_mph = try response.decodeIfPresent(Double.self, forKey: .wind_mph) ?? 0.0
     }
 }
 
